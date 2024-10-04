@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Nataša zna password - Početna</title>
+    <meta name="description" content="Hackathon Hrvatskog Telekoma - Nataša zna password">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Nataša zna password</h1>
+        <p>Dobrodošli na hackathon Hrvatskog Telekoma "Nataša zna password". Molimo unesite lozinku za početak izazova:</p>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            <input type="password" name="password" placeholder="Unesite lozinku" required>
+            <button type="submit">Početak</button>
+        </form>
+    </div>
+</body>
+</html>

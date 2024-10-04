@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Level {{ level_number }} - Nataša zna password</title>
+    <meta name="description" content="Hackathon Hrvatskog Telekoma - Nataša zna password - Level {{ level_number }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Poveznica na vašu CSS datoteku -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Level {{ level_number }}</h1>
+
+        <div class="chat-window">
+            {% for message in conversation_history %}
+                {% if message.role == 'user' %}
+                    <div class="chat-message user-message">
+                        <p><strong>Vi:</strong> {{ message.content }}</p>
+                    </div>
+                {% elif message.role == 'assistant' %}
+                    <div class="chat-message assistant-message">
+                        <p><strong>Nataša:</strong> {{ message.content }}</p>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- Forma za slanje upita Nataši -->
+        <form method="post" id="user-input-form">
+            <textarea name="user_input" id="user_input" rows="4" cols="50" placeholder="Upišite svoj upit..." required></textarea>
+            <button type="submit">Pošalji upit</button>
+        </form>
+
+        <hr>
+
+        <p>Unesite password koji ste dobili od Nataše za sljedeći level:</p>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="post">
+            <input type="password" name="password" placeholder="Unesite password" required>
+            <button type="submit">Pošalji password</button>
+        </form>
+    </div>
+
+    <!-- JavaScript kod za Ctrl + Enter funkcionalnost -->
+    <script>
+        // Funkcija za slanje forme kada je pritisnut Ctrl (ili Cmd) + Enter
+        document.getElementById('user_input').addEventListener('keydown', function(event) {
+            if ((event.ctrlKey || event.metaKey) && event.key === 'Enter') {
+                event.preventDefault(); // Sprječava umetanje novog reda
+                document.getElementById('user-input-form').submit();
+            }
+        });
+    </script>
+</body>
+</html>

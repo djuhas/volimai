@@ -1,0 +1,143 @@
+/* Opći stilovi */
+body {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.5); /* Overlay za tamniju pozadinu */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: rgba(0, 0, 0, 0.8); /* Poluprozirna pozadina za bolju čitljivost */
+    margin: 50px auto;
+    max-width: 800px;
+    border-radius: 15px; /* Zaobljeni rubovi */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Sjena */
+    position: relative;
+    z-index: 1;
+}
+
+/* Naslovi */
+h1 {
+    color: #E20074;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Gumbi */
+button {
+    background-color: #E20074;
+    color: #fff;
+    border: none;
+    padding: 12px 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 1em;
+    border-radius: 30px; /* Zaobljeni gumb */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c20065; /* Tamnija nijansa na hover */
+}
+
+/* Polja za unos */
+input[type="password"], textarea {
+    padding: 12px;
+    margin-top: 10px;
+    width: 80%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #E20074;
+    color: #fff;
+    border-radius: 10px; /* Zaobljeni rubovi */
+    font-size: 1em;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+input[type="password"]:focus, textarea:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Prozor za chat */
+.chat-window {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    text-align: left;
+    overflow-y: auto;
+    max-height: 400px;
+    padding-right: 10px;
+}
+
+/* Poruke u chatu */
+.chat-message {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 15px; /* Zaobljeni rubovi */
+    line-height: 1.5em;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: rgba(226, 0, 116, 0.2); /* Magenta nijansa */
+    color: #fff;
+    align-self: flex-end;
+}
+
+.assistant-message {
+    background-color: rgba(51, 51, 51, 0.8);
+    color: #fff;
+    align-self: flex-start;
+}
+
+/* Stilovi za poruke */
+.chat-message p {
+    margin: 0;
+}
+
+/* Poruka o grešci */
+.error {
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Stil za formular */
+form {
+    margin-top: 20px;
+}
+
+/* Responsive dizajn */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px;
+        padding: 30px 15px;
+    }
+
+    input[type="password"], textarea {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+}
