@@ -44,9 +44,15 @@ def get_llm_response(level):
     }
 
     try:
+        print(f"Sending request to LLM API at {ENDPOINT}")  # Debug: endpoint
+        print(f"Payload: {payload}")  # Debug: payload
+        
         response = requests.post(ENDPOINT, headers=headers, json=payload)
         response.raise_for_status()
+        
         data = response.json()
+        print(f"Received response: {data}")  # Debug: API response
+
         response_text = data['choices'][0]['message']['content']
 
         # Dodaj odgovor LLM-a u povijest
@@ -60,6 +66,10 @@ def get_llm_response(level):
 
         return response_text
     except requests.RequestException as e:
+        print(f"Error occurred: {e}")  # Debug: request error
+        if response is not None:
+            print(f"Status code: {response.status_code}")  # Debug: status code
+            print(f"Response text: {response.text}")  # Debug: response text
         return f"Došlo je do greške: {e}"
 
 # Početna stranica
